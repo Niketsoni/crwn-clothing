@@ -31,42 +31,39 @@ class SignIn extends React.Component {
 
   render() {
     return (
-      console.log("state", this.state),
-      (
-        <div className="sign-in">
-          <h2 className="title">I already have an accound</h2>
-          <span>Sign in with your email and password</span>
+      <div className="sign-in">
+        <h2 className="title">I already have an accound</h2>
+        <span>Sign in with your email and password</span>
 
-          <form onSubmit={this.handleSubmit}>
-            <FormInput
-              name="email"
-              type="text"
-              value={this.state.email}
-              label="Email"
-              handleChange={this.handleChange}
-            />
+        <form onSubmit={this.handleSubmit}>
+          <FormInput
+            name="email"
+            type="text"
+            value={this.state.email}
+            label="Email"
+            handleChange={this.handleChange}
+          />
 
-            <FormInput
-              name="password"
-              type="password"
-              value={this.state.password}
-              label="Password"
-              handleChange={this.handleChange}
-            />
+          <FormInput
+            name="password"
+            type="password"
+            value={this.state.password}
+            label="Password"
+            handleChange={this.handleChange}
+          />
 
-            <div className="buttons">
-              <CuatomButton type="submit">SIGN IN</CuatomButton>
-              <CuatomButton
-                type="button"
-                onClick={signInWithgoogle}
-                isGoogleSignIn
-              >
-                SIGN IN WITH GOOGLE
-              </CuatomButton>
-            </div>
-          </form>
-        </div>
-      )
+          <div className="buttons">
+            <CuatomButton type="submit">SIGN IN</CuatomButton>
+            <CuatomButton
+              type="button"
+              onClick={signInWithgoogle}
+              isGoogleSignIn
+            >
+              SIGN IN WITH GOOGLE
+            </CuatomButton>
+          </div>
+        </form>
+      </div>
     );
   }
 }
