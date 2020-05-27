@@ -16,7 +16,7 @@ const config = {
 firebase.initializeApp(config);
 
 export const createUserProfileDocument = async (userAuth, additionalData) => {
-  if (!userAuth) return; // if user is siggned in
+  if (!userAuth) return; // if user is not siggned in
   const userRef = firestore.doc(`users/${userAuth.uid}`);
   const snapShot = await userRef.get();
   console.log("snapshot", snapShot);
