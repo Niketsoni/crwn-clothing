@@ -9,6 +9,11 @@ export const selectCartItems = createSelector(
   (cart) => cart.cartItems // function to get a slice of this state
 );
 
+export const selectCartHidden = createSelector(
+  [selectCart],
+  (cart) => cart.hidden
+);
+
 export const selectCartItemsCount = createSelector(
   [selectCartItems], // using declaired selector as a selector
   (cartItems) =>
@@ -19,4 +24,12 @@ export const selectCartItemsCount = createSelector(
     )
 );
 
-export default selectCartItemsCount;
+export const selectCartItemsTotal = createSelector(
+  [selectCartItems],
+  (cartItems) =>
+    cartItems.reduce(
+      (accumulatedQuantity, cartItem) =>
+        accumulatedQuantity + cartItem.quantity * cartItem.price,
+      0
+    )
+);

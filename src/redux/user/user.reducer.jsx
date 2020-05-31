@@ -6,7 +6,7 @@ const INITIAL_STATE = {
 };
 
 const userReducer = (state = INITIAL_STATE, action) => {
-  // here we are setting default papameter value with Initial state coz current state should have some value when it gets initilize
+  // here we are setting default parameter value with Initial state coz current state should have some value when it gets initilize
   switch (action.type) {
     case UserActionTypes.SET_CURRENT_USER:
       return {
