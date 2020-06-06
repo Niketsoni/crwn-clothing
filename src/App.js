@@ -10,7 +10,7 @@ import HomePage from "./pages/homepage/homepage.component";
 import ShopPage from "./pages/shop/shop.component";
 import SignInSignUp from "./pages/sign-in-sign-up/sign-in-sign-up.component";
 import Header from "./components/header/header.component";
-import "./App.css";
+import { GlobalStyle } from "./global.styles";
 import setCurrentUser from "./redux/user/user.actions";
 
 class App extends React.Component {
@@ -41,6 +41,7 @@ class App extends React.Component {
   render() {
     return (
       <div>
+        <GlobalStyle />
         <Header />
         <Switch>
           <Route exact path="/" component={HomePage} />
