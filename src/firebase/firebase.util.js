@@ -22,14 +22,13 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
   console.log("snapshot", snapShot);
 
   if (!snapShot.exists) {
-    const { displayName, email, photoURL } = userAuth;
+    const { displayName, email } = userAuth;
     const createdAt = new Date();
     try {
       await userRef.set({
         displayName,
         email,
         createdAt,
-        photoURL,
         ...additionalData,
       });
     } catch (error) {
@@ -52,6 +51,25 @@ export const addCollectionAndDocuments = async (
     batch.set(newDocRef, obj);
   });
   return await batch.commit();
+};
+
+export const convertCollectionsSnapshotToMap = (collections) => {
+  const transformedCollection = collections.docs.map((doc) => {
+    const { title, items } = doc.data();
+
+    return {
+      routeName: encodeURI(title.toLowerCase()), // it'll return us a url string which is will support all url standered string
+      id: doc.id,
+      title,
+      items,
+    };
+  });
+
+  // using reduce to set a key against a collection on items (category eg. hats,jackets)
+  return transformedCollection.reduce((accumulator, collection) => {
+    accumulator[collection.title.toLowerCase()] = collection;
+    return accumulator;
+  }, {});
 };
 
 export const auth = firebase.auth();
