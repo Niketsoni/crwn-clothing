@@ -14,7 +14,7 @@
   .items {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-gap: 10px;
+    grid-gap: 9px;
 
     & .collection-item {
       margin-bottom: 30px;
